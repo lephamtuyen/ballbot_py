@@ -1,19 +1,20 @@
 # Install
 
 ```bash
-pip install cloudpickle==1.2.1
-pip install gym[atari,box2d,classic_control]~=0.15.3
-pip install ipython
-pip install joblib
-pip install matplotlib==3.1.1
-pip install mpi4py
-pip install numpy
-pip install pandas
-pip install pytest
-pip install psutil
-pip install scipy
-pip install seaborn==0.8.1
-pip install tensorflow>=1.8.0,<2.0
-pip install torch==1.3.1
-pip install tqdm
+sudo apt install libopenmpi-dev
+sudo pip3 install cloudpickle==1.2.1
+sudo pip3 install gym[atari,box2d,classic_control]~=0.15.3
+sudo pip3 install ipython
+sudo pip3 install joblib
+sudo pip3 install matplotlib==3.1.1
+sudo pip3 install mpi4py
+sudo pip3 install numpy
+sudo pip3 install pandas
+sudo pip3 install pytest
+sudo pip3 install psutil
+sudo pip3 install scipy
+sudo pip3 install seaborn==0.8.1
+sudo pip3 install tensorflow>=1.8.0,<2.0
+sudo pip3 install torch==1.3.1
+sudo pip3 install tqdm
 ```
