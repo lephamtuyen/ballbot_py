@@ -1,3 +1,8 @@
+import os, sys
+
+local_bakingsoda_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../"))
+sys.path= [local_bakingsoda_path] + sys.path
+
 import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
