@@ -177,12 +177,12 @@ class Ballbot2D_SK(gym.Env):
         self.x_[2] = -6.7 * self.theta_[0] - 2.1 * u
         self.theta_[2] = 3.79 * u + 25.52 * self.theta_[0]
 
-        self.x_[0] = self.x_[0] + self.x_[1] * self.controlUpdate_dt_
         self.x_[1] = self.x_[1] + self.x_[2] * self.controlUpdate_dt_
-
-        self.theta_[0] = self.theta_[0] + self.theta_[1] * self.controlUpdate_dt_
+        self.x_[0] = self.x_[0] + self.x_[1] * self.controlUpdate_dt_
+        
         self.theta_[1] = self.theta_[1] + self.theta_[2] * self.controlUpdate_dt_
-
+        self.theta_[0] = self.theta_[0] + self.theta_[1] * self.controlUpdate_dt_
+        
         cost1 = self.theta_[0]*self.theta_[0] +self.x_[0]*self.x_[0]
         cost2 = .0005 * (u * u)
         costs = cost1 + cost2
