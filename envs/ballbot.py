@@ -174,6 +174,9 @@ class Ballbot2D_SK(gym.Env):
     def step(self,u):
         u = np.clip(u, -self.maxTorque_, self.maxTorque_)[0]
 
+        self.old_x = self.x_[0]
+
+
         self.x_[2] = -6.7 * self.theta_[0] - 2.1 * u
         self.theta_[2] = 3.79 * u + 25.52 * self.theta_[0]
 
@@ -182,10 +185,15 @@ class Ballbot2D_SK(gym.Env):
         
         self.theta_[1] = self.theta_[1] + self.theta_[2] * self.controlUpdate_dt_
         self.theta_[0] = self.theta_[0] + self.theta_[1] * self.controlUpdate_dt_
-        
-        cost1 = self.theta_[0]*self.theta_[0] +self.x_[0]*self.x_[0]
-        cost2 = .0005 * (u * u)
-        costs = cost1 + cost2
+
+        cost1 = self.theta_[0] * self.theta_[0]
+
+        if self.x_[0] > 0:
+            cost2 = self.x_[0] - self.old_x
+        else:
+            cost2 =  self.old_x - self.x_[0]
+        cost3 = .0005 * (u * u)
+        costs = cost1 + cost2 + cost3
 
         term = self.isViolatingBoxConstraint()
 
